@@ -5,7 +5,7 @@ import os
 # Store connected clients
 clients = set()
 
-async def handle_client(websocket, path):
+async def handle_client(websocket):
     # Register new client
     clients.add(websocket)
     try:

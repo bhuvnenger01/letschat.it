@@ -6,7 +6,7 @@ export default function ChatScreen({ route }) {
   const { username } = route.params;
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ws = new WebSocket('wss://letschatit-production.up.railway.app'); // Your WebSocket server address
+  const ws = new WebSocket('wss://letschatit-production.up.railway.app/'); // Your WebSocket server address
 
   useEffect(() => {
     ws.onopen = () => {
