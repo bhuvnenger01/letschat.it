@@ -37,7 +37,7 @@ async def broadcast(message):
         await client.send(message)
 
 async def main():
-    server = await websockets.serve(handle_client, "127.0.0.1", 1060)
+    server = await websockets.serve(handle_client, "52.41.36.82", 1060)
     print("WebSocket Server is running on ws://127.0.0.1:1060")
     await server.wait_closed()
 
