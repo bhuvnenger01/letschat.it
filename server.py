@@ -41,7 +41,7 @@ async def main():
     # Use the port from the environment variable for Render
      # Default to 1060 if PORT is not set
     server = await websockets.serve(handle_client, "0.0.0.0")
-    print(f"WebSocket Server is running on ws://0.0.0.0:{port}")
+    print(f"WebSocket Server is running on ws://0.0.0.0:")
     await server.wait_closed()
 
 # Start the server
