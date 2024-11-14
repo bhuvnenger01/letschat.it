@@ -1,16 +1,14 @@
 import asyncio
 import websockets
-import json
 import os
 
 # Store connected clients
 clients = set()
 
-async def handle_client(websocket, path):  # `path` is kept to match your function signature
+async def handle_client(websocket, path):
     # Register new client
     clients.add(websocket)
     try:
-        # Receive username (client sends their name when connected)
         username = await websocket.recv()
         print(f"{username} connected")
 
@@ -33,16 +31,13 @@ async def handle_client(websocket, path):  # `path` is kept to match your functi
         await broadcast(f"{username} has left the chat.")
 
 async def broadcast(message):
-    # Send the message to all connected clients
     for client in clients:
         await client.send(message)
 
 async def main():
-    # Use the port from the environment variable for Render
-     # Default to 1060 if PORT is not set
-    server = await websockets.serve(handle_client, "0.0.0.0")
-    print(f"WebSocket Server is running on ws://0.0.0.0:")
+    port = int(os.getenv("PORT", 1060))  # Render assigns the PORT environment variable
+    server = await websockets.serve(handle_client, "0.0.0.0", port)
+    print(f"WebSocket Server is running on ws://0.0.0.0:{port}")
     await server.wait_closed()
 
-# Start the server
 asyncio.run(main())
