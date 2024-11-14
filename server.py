@@ -1,11 +1,12 @@
 import asyncio
 import websockets
 import json
+import os
 
 # Store connected clients
 clients = set()
 
-async def handle_client(websocket):  # Add `path` as a parameter
+async def handle_client(websocket, path):  # `path` is kept to match your function signature
     # Register new client
     clients.add(websocket)
     try:
@@ -37,12 +38,11 @@ async def broadcast(message):
         await client.send(message)
 
 async def main():
-    server = await websockets.serve(handle_client, "52.41.36.82", 1060)
-    print("WebSocket Server is running on ws://127.0.0.1:1060")
+    # Use the port from the environment variable for Render
+    port = int(os.getenv("PORT", 1060))  # Default to 1060 if PORT is not set
+    server = await websockets.serve(handle_client, "0.0.0.0", port)
+    print(f"WebSocket Server is running on ws://0.0.0.0:{port}")
     await server.wait_closed()
 
 # Start the server
 asyncio.run(main())
-
- 
- 
