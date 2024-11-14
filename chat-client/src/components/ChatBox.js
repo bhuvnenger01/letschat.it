@@ -25,7 +25,7 @@ function ChatBox({ username, websocket }) {
       <div className="messages-container">
         {messages.map((msg, index) => (
           <div key={index} className="message">
-            {msg}
+            <p>{username}: {msg}</p>
           </div>
         ))}
       </div>
