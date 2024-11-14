@@ -1,0 +1,12 @@
+{
+  "name": "chat_app",
+  "version": "1.0.0",
+  "description": "This project is a GUI-based multi-client chat application built using Python. It enables secure communication over a network with end-to-end encryption using AES for symmetric encryption and RSA for key exchange.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
