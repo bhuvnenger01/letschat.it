@@ -6,7 +6,7 @@ import os
 # Store connected clients
 clients = set()
 
-async def handle_client(websocket):  # `path` is kept to match your function signature
+async def handle_client(websocket, path):  # `path` is kept to match your function signature
     # Register new client
     clients.add(websocket)
     try:
@@ -39,8 +39,8 @@ async def broadcast(message):
 
 async def main():
     # Use the port from the environment variable for Render
-    port = int(os.getenv("PORT", 1060))  # Default to 1060 if PORT is not set
-    server = await websockets.serve(handle_client, "0.0.0.0", port)
+     # Default to 1060 if PORT is not set
+    server = await websockets.serve(handle_client, "0.0.0.0")
     print(f"WebSocket Server is running on ws://0.0.0.0:{port}")
     await server.wait_closed()
 
