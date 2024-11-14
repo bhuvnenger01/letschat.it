@@ -35,7 +35,7 @@ async def broadcast(message):
         await client.send(message)
 
 async def main():
-    port = int(os.getenv("PORT", 1060))  # Render assigns the PORT environment variable
+    port = int(os.environ.get("PORT", 1060))  # Render assigns the PORT environment variable
     server = await websockets.serve(handle_client, "0.0.0.0", port)
     print(f"WebSocket Server is running on ws://0.0.0.0:{port}")
     await server.wait_closed()
