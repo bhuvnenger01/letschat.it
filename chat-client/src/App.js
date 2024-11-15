@@ -10,7 +10,7 @@ function App() {
 
   const handleLogin = (user) => {
     setUsername(user);
-    const socket = new WebSocket('ws://letschatit.up.railway.app');
+    const socket = new WebSocket('wss://letschatit.up.railway.app');
     socket.onopen = () => {
       setIsConnected(true);
       setWs(socket);
