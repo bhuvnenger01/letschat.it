@@ -4,6 +4,7 @@ function MessageInput({ onSendMessage }) {
   const [message, setMessage] = useState('');
 
 
+
   const handleSendClick = () => {
     onSendMessage(message);
     setMessage('');
